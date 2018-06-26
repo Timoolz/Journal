@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Journal</string>
+    <string name="edit_diary_activity_name">How are you feeling Today?</string>
 </resources>
