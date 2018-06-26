@@ -27,4 +27,6 @@ public interface DiaryDao {
     @Query("SELECT * FROM diary WHERE id = :id")
     LiveData<DiaryEntry> loadEntryById(int id);
 
+    @Query("SELECT * FROM diary WHERE id = :id")
+    DiaryEntry loadEntry(int id);
 }

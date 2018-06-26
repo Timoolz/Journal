@@ -29,6 +29,8 @@ public class DiaryEntry {
     }
 
 
+
+
     public DiaryEntry(int id, String mood, String diaryContent, Date createdAt, Date updatedAt){
 
         this.id =id;
