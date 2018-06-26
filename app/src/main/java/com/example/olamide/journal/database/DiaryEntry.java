@@ -2,6 +2,7 @@ package com.example.olamide.journal.database;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.Date;
@@ -18,6 +19,24 @@ public class DiaryEntry {
     @ColumnInfo(name = "updated_at")
     private Date updatedAt;
 
+    @Ignore
+    public DiaryEntry(String mood, String diaryContent, Date createdAt, Date updatedAt){
+
+        this.mood = mood;
+        this.diaryContent = diaryContent;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+
+    public DiaryEntry(int id, String mood, String diaryContent, Date createdAt, Date updatedAt){
+
+        this.id =id;
+        this.mood = mood;
+        this.diaryContent = diaryContent;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
     public int getId() {
         return id;
     }
