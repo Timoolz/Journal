@@ -2,9 +2,9 @@
     <string name="app_name">Journal</string>
     <string name="edit_diary_activity_name">How are you feeling Today?</string>
 
-    <string name="edit_mood_description">What is your current mood?&#8230;</string>
+    <string name="edit_mood_description">What is your current mood?</string>
 
-    <string name="edit_diary_content_description">Express yourself!!!&#8230;</string>
+    <string name="edit_diary_content_description">Express yourself!!!</string>
 
 
     <string name="add_button">Add</string>
