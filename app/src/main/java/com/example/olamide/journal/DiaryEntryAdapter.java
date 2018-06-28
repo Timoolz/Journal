@@ -50,15 +50,25 @@ public class DiaryEntryAdapter extends RecyclerView.Adapter<DiaryEntryAdapter.Di
 
         String mood = diaryEntry.getMood();
         String diaryContent = diaryEntry.getDiaryContent();
-
         String[] lines = diaryContent.split(System.getProperty("line.separator"));
+        String linesDisplay = "";
+        int linesCount = 0;
         String createdAt = dateFormat.format(diaryEntry.getCreatedAt());
         String updatedAt = dateFormat.format(diaryEntry.getUpdatedAt());
 
         //Set values
         holder.moodView.setText(mood);
-        holder.diaryContentView.setText(lines[0]+ '\n' +lines[1] + '\n' +lines[2]+ '\n' +lines[3] +"...");
 
+        for(String liine : lines){
+            linesDisplay += '\n'+liine ;
+            linesCount++;
+            if(linesCount>=lines.length || linesCount>=4){
+                break;
+            }
+        }
+        holder.diaryContentView.setText(linesDisplay +"...");
+
+        //holder.diaryContentView.setText(diaryContent);
         holder.datesView.setText("Modified on " +updatedAt+ "  /  Created on " +createdAt);
     }
 
