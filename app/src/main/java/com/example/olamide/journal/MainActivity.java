@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements DiaryEntryAdapter
                 if(firebaseAuth.getCurrentUser() != null){
 
                     updateEntries();
-                    mTextViewName.setText(firebaseAuth.getCurrentUser().getUid() +"   " +firebaseAuth.getCurrentUser().getDisplayName());
+                    mTextViewName.setText("Welcome  " +firebaseAuth.getCurrentUser().getDisplayName());
 
                 }
                 else {
