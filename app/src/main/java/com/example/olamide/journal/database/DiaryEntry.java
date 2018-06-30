@@ -18,26 +18,30 @@ public class DiaryEntry {
     private Date createdAt;
     @ColumnInfo(name = "updated_at")
     private Date updatedAt;
+    @ColumnInfo(name = "google_uid")
+    private String googleUid = null;
 
     @Ignore
-    public DiaryEntry(String mood, String diaryContent, Date createdAt, Date updatedAt){
+    public DiaryEntry(String mood, String diaryContent, Date createdAt, Date updatedAt, String googleUid ){
 
         this.mood = mood;
         this.diaryContent = diaryContent;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.googleUid = googleUid;
     }
 
 
 
 
-    public DiaryEntry(int id, String mood, String diaryContent, Date createdAt, Date updatedAt){
+    public DiaryEntry(int id, String mood, String diaryContent, Date createdAt, Date updatedAt, String googleUid){
 
         this.id =id;
         this.mood = mood;
         this.diaryContent = diaryContent;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.googleUid = googleUid;
     }
     public int getId() {
         return id;
@@ -77,5 +81,13 @@ public class DiaryEntry {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getGoogleUid() {
+        return googleUid;
+    }
+
+    public void setGoogleUid(String googleUid) {
+        this.googleUid = googleUid;
     }
 }

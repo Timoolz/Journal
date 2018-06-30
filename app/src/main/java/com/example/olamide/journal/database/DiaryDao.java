@@ -15,6 +15,9 @@ public interface DiaryDao {
     @Query("SELECT * FROM diary ORDER BY created_at")
     LiveData<List<DiaryEntry>> loadAllEntries();
 
+    @Query("SELECT * FROM diary WHERE google_uid = :googleUid ORDER BY created_at")
+    LiveData<List<DiaryEntry>> loadAllEntriesByUid(String googleUid );
+
     @Insert
     void insertEntry(DiaryEntry diaryEntry);
 
@@ -29,4 +32,7 @@ public interface DiaryDao {
 
     @Query("SELECT * FROM diary WHERE id = :id")
     DiaryEntry loadEntry(int id);
+
+    @Query("SELECT * FROM diary ORDER BY created_at")
+    List<DiaryEntry> loadEntries();
 }

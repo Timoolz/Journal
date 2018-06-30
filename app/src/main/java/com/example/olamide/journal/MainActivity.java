@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements DiaryEntryAdapter
     private JournalDatabase mDb;
 
 
+    private List<DiaryEntry> virtualEntries;
     private FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
     private GoogleSignInClient mGoogleSignInClient;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements DiaryEntryAdapter
         super.onStart();
 
         mAuth.addAuthStateListener(mAuthListener);
+
     }
 
     @Override
@@ -84,8 +86,12 @@ public class MainActivity extends AppCompatActivity implements DiaryEntryAdapter
 
                 if(firebaseAuth.getCurrentUser() != null){
 
+                    updateEntries();
                     mTextViewName.setText(firebaseAuth.getCurrentUser().getUid() +"   " +firebaseAuth.getCurrentUser().getDisplayName());
-                    
+
+                }
+                else {
+                    mTextViewName.setText(null);
                 }
 
             }
@@ -172,6 +178,27 @@ public class MainActivity extends AppCompatActivity implements DiaryEntryAdapter
     }
 
 
+    public void updateEntries(){
+
+
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                if(mAuth.getCurrentUser()!= null){
+
+                    virtualEntries = mDb.diaryDao().loadEntries();
+
+                    for(DiaryEntry entry: virtualEntries){
+                        entry.setGoogleUid(mAuth.getCurrentUser().getUid());
+                        mDb.diaryDao().updateEntry(entry);
+                    }
+
+                }
+                //finish();
+            }
+        });
+
+    }
 
 
     @Override

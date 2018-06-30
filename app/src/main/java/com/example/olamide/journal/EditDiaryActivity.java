@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import com.example.olamide.journal.database.DiaryEntry;
 import com.example.olamide.journal.database.JournalDatabase;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Date;
 
@@ -37,6 +38,8 @@ public class EditDiaryActivity extends AppCompatActivity {
     // Member variable for the Database
     private JournalDatabase mDb;
 
+    private FirebaseAuth mAuth;
+
 
 
     @Override
@@ -44,6 +47,9 @@ public class EditDiaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_diary);
 
+        // [START initialize_auth]
+        mAuth = FirebaseAuth.getInstance();
+        // [END initialize_auth]
 
         initViews();
 
@@ -129,7 +135,12 @@ public class EditDiaryActivity extends AppCompatActivity {
         String diaryContent = mMultiEditText.getText().toString();
         Date date = new Date();
 
-        final DiaryEntry entry = new DiaryEntry(mood, diaryContent, date, date);
+        String googleUid = null;
+        if(mAuth.getCurrentUser() != null){
+             googleUid = mAuth.getCurrentUser().getUid();
+        }
+
+        final DiaryEntry entry = new DiaryEntry(mood, diaryContent, date, date,googleUid );
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
