@@ -20,8 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditDiaryActivity"
-            android:label="@string/edit_diary_activity_name"></activity>
+        <activity
+            android:name=".EditDiaryActivity"
+            android:label="@string/edit_diary_activity_name" />
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

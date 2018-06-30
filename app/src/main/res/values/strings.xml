@@ -6,7 +6,10 @@
 
     <string name="edit_diary_content_description">Express yourself!!!</string>
 
+    action_sign_in
 
+    <string name="action_sign_in">Google Sign In</string>
+    <string name="action_sign_out"> Sign Out</string>
     <string name="add_button">Add</string>
     <string name="update_button">Update</string>
 
